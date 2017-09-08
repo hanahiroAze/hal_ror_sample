@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
   # GET /orders/:order_id
 
   def show
-    render json: OrderSerializer.prodnew(@order)
+    render json: OrderSerializer.new(@order)
   end
 
   # POST /orders
@@ -54,16 +54,16 @@ class OrdersController < ApplicationController
     end
 
     def doc_usage
-      ["GET", "POST", "PUT", "PATCH", "DELETE"].each do |method|
-        begin
-          definition = Rails.application.routes.recognize_path("/products", {method: method})
-          definition = Rails.application.routes.recognize_path("/products/:id", {method: method})
-          p definition
-          # p self.method(definition[:action]).source_location
-        rescue ActionController::RoutingError => _e
-          nil
-        end
-      end
+      # ["GET", "POST", "PUT", "PATCH", "DELETE"].each do |method|
+      #   begin
+      #     definition = Rails.application.routes.recognize_path("/products", {method: method})
+      #     definition = Rails.application.routes.recognize_path("/products/:id", {method: method})
+      #     p definition
+      #     # p self.method(definition[:action]).source_location
+      #   rescue ActionController::RoutingError => _e
+      #     nil
+      #   end
+      # end
 
       {
         "GET": {
